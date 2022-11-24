@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://da6v3njfa45gy"]
+
+[ext_resource type="Texture2D" uid="uid://b3f84x1duc1jp" path="res://background/textures/background.png" id="1_rb45c"]
+[ext_resource type="Texture2D" uid="uid://ihod3f7n1rgn" path="res://background/textures/bg_2.png" id="2_4c45e"]
+
+[node name="Background" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_rb45c")
+
+[node name="Foreground" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_4c45e")
