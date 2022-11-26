@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://cpwng8msx6iad"]
 
 [ext_resource type="Texture2D" uid="uid://d3iptildhygoq" path="res://tiles/textures/tileset.png" id="1_4svu3"]
 
@@ -319,7 +319,8 @@ texture = ExtResource("1_4svu3")
 9:3/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_cirft"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
