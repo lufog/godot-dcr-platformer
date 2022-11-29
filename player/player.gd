@@ -20,32 +20,32 @@ var state := States.IDLE
 @onready var animation_state: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 
 
-func _physics_process(delta: float) -> void:
-	var input_direction := Input.get_axis("ui_left", "ui_right")
-	
-	match state:
-		States.IDLE:
-			animation_state.travel("Idle")
-			if not is_equal_approx(input_direction, 0.0):
-				state = States.WALK
-		States.WALK:
-			animation_state.travel("Walk")
-			if is_equal_approx(input_direction, 0.0):
-				state = States.IDLE
-				continue
-			
-			update_direction(input_direction)
-			velocity.x = walk_speed * input_direction
-			apply_gravity(delta)
-			move_and_slide()
-		States.FALL:
-			animation_state.travel("Fall")
-		States.JUMP:
-			animation_state.travel("Jump")
-		States.ATTACK:
-			animation_state.travel("Attack")
-		States.DASH:
-			animation_state.travel("Dash")
+#func _physics_process(delta: float) -> void:
+#	var input_direction := Input.get_axis("ui_left", "ui_right")
+#
+#	match state:
+#		States.IDLE:
+#			animation_state.travel("Idle")
+#			if not is_equal_approx(input_direction, 0.0):
+#				state = States.WALK
+#		States.WALK:
+#			animation_state.travel("Walk")
+#			if is_equal_approx(input_direction, 0.0):
+#				state = States.IDLE
+#				continue
+#
+#			update_direction(input_direction)
+#			velocity.x = walk_speed * input_direction
+#			apply_gravity(delta)
+#			move_and_slide()
+#		States.FALL:
+#			animation_state.travel("Fall")
+#		States.JUMP:
+#			animation_state.travel("Jump")
+#		States.ATTACK:
+#			animation_state.travel("Attack")
+#		States.DASH:
+#			animation_state.travel("Dash")
 
 
 func on_attack_finished() -> void:
@@ -64,7 +64,7 @@ func has_dashes() -> bool:
 	return num_dashes > 0
 
 
-func  update_direction(input_direction: float) -> void:
+func update_direction(input_direction: float) -> void:
 	if input_direction > 0:
 		hitbox_marker.rotation = deg_to_rad(0)
 		sprite.flip_h = false

@@ -2,10 +2,7 @@ extends PlayerState
 
 
 func enter() -> void:
-	player.velocity.x = 0
-	player.animation_state.travel("Idle")
-	if player.has_dashes():
-		player.reset_dash_counter(1)
+	player.animation_state.travel("Walk")
 
 
 func exit() -> void:
@@ -18,15 +15,19 @@ func physics_update(delta: float) -> void:
 			state_machine.transition_to("FallState")
 			return
 	
+	var input_direction_x := Input.get_axis("ui_left", "ui_right")
+	
+	if is_zero_approx(input_direction_x):
+		state_machine.transition_to("IdleState")
+		return
+	
+	player.update_direction(input_direction_x)
+	player.velocity.x = player.walk_speed * input_direction_x
 	player.apply_gravity(delta)
 	player.move_and_slide()
 	
-	# Handle collisions in future.
-	
 	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("JumpState")
-	elif Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
-		state_machine.transition_to("WalkState")
 	elif Input.is_action_pressed("attack"):
 		state_machine.transition_to("AttackState")
 	elif Input.is_action_just_pressed("dash") and player.has_dashes():
