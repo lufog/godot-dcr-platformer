@@ -76,3 +76,7 @@ func update_direction(input_direction: float) -> void:
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
+
+
+func restart_level() -> void:
+	pass

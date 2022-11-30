@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cn3orgd3pg5wv"]
+[gd_scene load_steps=61 format=3 uid="uid://btboaal3h6vkr"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_iqkht"]
 [ext_resource type="Texture2D" uid="uid://dfaq7cocuyix8" path="res://player/textures/player_sprite_sheet.png" id="2_joq06"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://player/states/walk_state.gd" id="5_5nw5k"]
 [ext_resource type="Script" path="res://player/states/jump_state.gd" id="6_s8sbi"]
 [ext_resource type="Script" path="res://player/states/fall_state.gd" id="7_kknx0"]
+[ext_resource type="Script" path="res://player/states/attack_state.gd" id="8_8uuua"]
+[ext_resource type="Script" path="res://player/states/dash_state.gd" id="9_pyfr0"]
+[ext_resource type="Script" path="res://player/states/death_state.gd" id="10_c3jrm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e51sc"]
 radius = 4.0
@@ -34,6 +37,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_w77y6"]
 resource_name = "attack"
 length = 0.4
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -46,11 +50,38 @@ tracks/0/keys = {
 "update": 1,
 "values": [30, 31, 32, 33]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxMarker/Hitbox/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_attack_finished"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_uqlau"]
 resource_name = "dash"
 length = 0.25
 loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,6 +93,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [24]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_dash_finished"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_w1e0b"]
@@ -77,6 +122,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 34]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart_level"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_2fg0h"]
@@ -286,7 +345,7 @@ states/Push/position = Vector2(849, 287)
 states/Walk/node = SubResource("AnimationNodeAnimation_ur8j5")
 states/Walk/position = Vector2(721, -51)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_md8b8"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_3kqm0"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_iuewu"), "Idle", "Fall", SubResource("AnimationNodeStateMachineTransition_kpy7d"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_q5twr"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_x7jyb"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_use44"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_h6vpu"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_xfifb"), "Push", "Idle", SubResource("AnimationNodeStateMachineTransition_tv4lr"), "Fall", "Idle", SubResource("AnimationNodeStateMachineTransition_nejwo"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_yntsi"), "Dash", "Fall", SubResource("AnimationNodeStateMachineTransition_t86rw"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_km45h"), "Jump", "Dash", SubResource("AnimationNodeStateMachineTransition_pjkxd"), "Jump", "Death", SubResource("AnimationNodeStateMachineTransition_v44fp"), "Dash", "Death", SubResource("AnimationNodeStateMachineTransition_t77xk"), "Fall", "Death", SubResource("AnimationNodeStateMachineTransition_14rvh"), "Push", "Death", SubResource("AnimationNodeStateMachineTransition_s3063"), "Walk", "Death", SubResource("AnimationNodeStateMachineTransition_o5xe8"), "Attack", "Death", SubResource("AnimationNodeStateMachineTransition_qvchc"), "Fall", "Dash", SubResource("AnimationNodeStateMachineTransition_l7y3d"), "Push", "Fall", SubResource("AnimationNodeStateMachineTransition_ujy51"), "Walk", "Fall", SubResource("AnimationNodeStateMachineTransition_rp0bi"), "Walk", "Push", SubResource("AnimationNodeStateMachineTransition_7qyf6"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_kc37a"), "Walk", "Dash", SubResource("AnimationNodeStateMachineTransition_jfi3o"), "Push", "Jump", SubResource("AnimationNodeStateMachineTransition_u762y")]
-graph_offset = Vector2(123, -134)
+graph_offset = Vector2(124, -82)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_tmvj8"]
 
@@ -322,7 +381,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_a2e3p")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_tmvj8")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -340,3 +398,12 @@ script = ExtResource("6_s8sbi")
 
 [node name="FallState" type="Node" parent="StateMachine"]
 script = ExtResource("7_kknx0")
+
+[node name="AttackState" type="Node" parent="StateMachine"]
+script = ExtResource("8_8uuua")
+
+[node name="DashState" type="Node" parent="StateMachine"]
+script = ExtResource("9_pyfr0")
+
+[node name="DeathState" type="Node" parent="StateMachine"]
+script = ExtResource("10_c3jrm")
