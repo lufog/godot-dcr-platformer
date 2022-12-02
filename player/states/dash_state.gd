@@ -13,10 +13,8 @@ func exit() -> void:
 
 
 func physics_update(_delta: float) -> void:
-	var input_direction := Input.get_axis("ui_left", "ui_right")
-	
 	player.velocity.y = 0
-	player.velocity.x = input_direction * player.dash_speed
+	player.velocity.x = player.facing_direction * player.dash_speed
 	player.move_and_slide()
 	
 	if not player.is_dashing:

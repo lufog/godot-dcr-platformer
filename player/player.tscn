@@ -13,7 +13,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e51sc"]
 radius = 4.0
-height = 14.0
+height = 16.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7t38s"]
 radius = 1.875
@@ -345,12 +345,13 @@ states/Push/position = Vector2(849, 287)
 states/Walk/node = SubResource("AnimationNodeAnimation_ur8j5")
 states/Walk/position = Vector2(721, -51)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_md8b8"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_3kqm0"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_iuewu"), "Idle", "Fall", SubResource("AnimationNodeStateMachineTransition_kpy7d"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_q5twr"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_x7jyb"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_use44"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_h6vpu"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_xfifb"), "Push", "Idle", SubResource("AnimationNodeStateMachineTransition_tv4lr"), "Fall", "Idle", SubResource("AnimationNodeStateMachineTransition_nejwo"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_yntsi"), "Dash", "Fall", SubResource("AnimationNodeStateMachineTransition_t86rw"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_km45h"), "Jump", "Dash", SubResource("AnimationNodeStateMachineTransition_pjkxd"), "Jump", "Death", SubResource("AnimationNodeStateMachineTransition_v44fp"), "Dash", "Death", SubResource("AnimationNodeStateMachineTransition_t77xk"), "Fall", "Death", SubResource("AnimationNodeStateMachineTransition_14rvh"), "Push", "Death", SubResource("AnimationNodeStateMachineTransition_s3063"), "Walk", "Death", SubResource("AnimationNodeStateMachineTransition_o5xe8"), "Attack", "Death", SubResource("AnimationNodeStateMachineTransition_qvchc"), "Fall", "Dash", SubResource("AnimationNodeStateMachineTransition_l7y3d"), "Push", "Fall", SubResource("AnimationNodeStateMachineTransition_ujy51"), "Walk", "Fall", SubResource("AnimationNodeStateMachineTransition_rp0bi"), "Walk", "Push", SubResource("AnimationNodeStateMachineTransition_7qyf6"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_kc37a"), "Walk", "Dash", SubResource("AnimationNodeStateMachineTransition_jfi3o"), "Push", "Jump", SubResource("AnimationNodeStateMachineTransition_u762y")]
-graph_offset = Vector2(124, -82)
+graph_offset = Vector2(166, -137)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_tmvj8"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
+floor_max_angle = 1.13446
 script = ExtResource("1_iqkht")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -371,7 +372,6 @@ collision_mask = 2
 position = Vector2(11, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7t38s")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -381,6 +381,7 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_a2e3p")
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_tmvj8")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

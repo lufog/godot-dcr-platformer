@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://bb0oahxmcwq50"]
+
+[ext_resource type="Script" path="res://objects/ground_button/ground_button.gd" id="1_fw2mr"]
+[ext_resource type="Texture2D" uid="uid://bvt2uhb84svbc" path="res://assets/Objects/misc_sheet.png" id="1_sdqvh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhwv4"]
+atlas = ExtResource("1_sdqvh")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eoyi"]
+atlas = ExtResource("1_sdqvh")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6k7jg"]
+animations = [{
+"frames": [SubResource("AtlasTexture_xhwv4")],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_6eoyi")],
+"loop": true,
+"name": &"unpressed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kibbl"]
+size = Vector2(4, 0)
+
+[node name="GroundButton" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_fw2mr")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+frames = SubResource("SpriteFrames_6k7jg")
+animation = &"unpressed"
+offset = Vector2(0, -12)
+
+[node name="UnpressedCollision" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, 0, -6, -4, 6, -4, 8, 0)
+
+[node name="PressedCollision" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-8, 0, -6, -3, 6, -3, 8, 0)
+disabled = true
+
+[node name="PressDetector" type="Area2D" parent="."]
+position = Vector2(0, -4.6)
+collision_layer = 4
+collision_mask = 5
+
+[node name="Collision" type="CollisionShape2D" parent="PressDetector"]
+shape = SubResource("RectangleShape2D_kibbl")
+
+[connection signal="body_entered" from="PressDetector" to="." method="_on_press_detector_body_entered"]
+[connection signal="body_exited" from="PressDetector" to="." method="_on_press_detector_body_exited"]

@@ -4,7 +4,7 @@ extends PlayerState
 func enter() -> void:
 	player.velocity.x = 0
 	player.animation_state.travel("Idle")
-	if player.has_dashes():
+	if not player.has_dashes():
 		player.reset_dash_counter(1)
 
 
