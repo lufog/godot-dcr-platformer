@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://06pw75svvykn"]
+
+[ext_resource type="Script" path="res://objects/stone_gate/stone_gate.gd" id="1_ta80w"]
+
+[node name="StoneGate" type="StaticBody2D"]
+script = ExtResource("1_ta80w")
