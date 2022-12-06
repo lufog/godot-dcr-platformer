@@ -23,7 +23,11 @@ position = Vector2(74, 121)
 [node name="GroundButton" parent="." instance=ExtResource("2_vpxd0")]
 position = Vector2(96, 128)
 
+[node name="StoneGate" parent="GroundButton" instance=ExtResource("7_jgfoh")]
+position = Vector2(-40, 16)
+
 [node name="Switch" parent="." instance=ExtResource("3_gx13o")]
 position = Vector2(272, 128)
 
 [node name="StoneGate" parent="Switch" instance=ExtResource("7_jgfoh")]
+position = Vector2(24, -32)
