@@ -1,0 +1,1 @@
+class_name SpikePit extends StaticBody2D

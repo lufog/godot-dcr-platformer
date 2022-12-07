@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1ea08py1fqrn"]
+[gd_scene load_steps=4 format=3 uid="uid://c1ea08py1fqrn"]
 
 [ext_resource type="Script" path="res://objects/rigid_box/rigid_box.gd" id="1_2hh3d"]
+[ext_resource type="Texture2D" uid="uid://bvt2uhb84svbc" path="res://assets/Objects/misc_sheet.png" id="2_i483h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bks63"]
+size = Vector2(16, 16)
 
 [node name="RigidBox" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_2hh3d")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_i483h")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(3.53753, 103.735, 16.8351, 16.2653)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_bks63")

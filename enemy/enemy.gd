@@ -28,6 +28,16 @@ func _physics_process(delta: float) -> void:
 			apply_gravity(delta)
 			move_and_slide()
 			
+			var collision_count := get_slide_collision_count()
+			for i in collision_count:
+				var _collision := get_slide_collision(i)
+				var collider := _collision.get_collider()
+				var player := collider as Player
+				if player != null:
+					player.state_machine.transition_to("DeathState")
+					continue
+				
+			
 		States.DEATH:
 			animated_sprite.play("Death")
 			collision.disabled = true

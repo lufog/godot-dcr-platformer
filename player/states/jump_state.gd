@@ -24,5 +24,13 @@ func physics_update(delta: float) -> void:
 	player.apply_gravity(delta)
 	player.move_and_slide()
 	
+	var collision_count := player.get_slide_collision_count()
+	for i in collision_count:
+		var _collision := player.get_slide_collision(i)
+		var collider := _collision.get_collider()
+		if collider is SpikeClub:
+			state_machine.transition_to("DeathState")
+			return
+	
 	if Input.is_action_just_pressed("dash") and player.has_dashes():
 		state_machine.transition_to("DashState")

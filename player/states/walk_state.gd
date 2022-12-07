@@ -26,6 +26,17 @@ func physics_update(delta: float) -> void:
 	player.apply_gravity(delta)
 	player.move_and_slide()
 	
+	var collision_count := player.get_slide_collision_count()
+	for i in collision_count:
+		var _collision := player.get_slide_collision(i)
+		var collider := _collision.get_collider()
+		if collider is SpikeClub:
+			state_machine.transition_to("DeathState")
+			return
+		elif collider is RigidBox:
+			pass
+		
+	
 	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("JumpState")
 	elif Input.is_action_pressed("attack"):

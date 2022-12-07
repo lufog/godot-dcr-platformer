@@ -19,6 +19,7 @@ var state := States.IDLE
 @onready var hitbox_marker: Marker2D = $HitboxMarker
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+@onready var state_machine: Node = $StateMachine
 
 
 func _ready() -> void:

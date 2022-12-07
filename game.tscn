@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7muc0gc6af0m"]
+[gd_scene load_steps=9 format=3 uid="uid://c7muc0gc6af0m"]
 
 [ext_resource type="PackedScene" uid="uid://da6v3njfa45gy" path="res://background/background.tscn" id="1_6ev12"]
 [ext_resource type="PackedScene" uid="uid://cpwng8msx6iad" path="res://tiles/tile_map.tscn" id="2_ca0xh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://chlx86wgkgpnp" path="res://objects/switch/switch.tscn" id="3_gx13o"]
 [ext_resource type="PackedScene" uid="uid://btboaal3h6vkr" path="res://player/player.tscn" id="4_noxn4"]
 [ext_resource type="PackedScene" uid="uid://06pw75svvykn" path="res://objects/stone_gate/stone_gate.tscn" id="7_jgfoh"]
+[ext_resource type="PackedScene" uid="uid://c1ea08py1fqrn" path="res://objects/rigid_box/rigid_box.tscn" id="7_ulut4"]
 
 [node name="Game" type="Node"]
 
@@ -18,13 +19,16 @@
 position = Vector2(122, 161)
 
 [node name="Player" parent="." instance=ExtResource("4_noxn4")]
-position = Vector2(74, 121)
+position = Vector2(104, 120)
 
 [node name="GroundButton" parent="." instance=ExtResource("2_vpxd0")]
-position = Vector2(96, 128)
+position = Vector2(72, 128)
 
 [node name="StoneGate" parent="GroundButton" instance=ExtResource("7_jgfoh")]
-position = Vector2(-40, 16)
+position = Vector2(-16, 16)
+
+[node name="RigidBox" parent="GroundButton/StoneGate" instance=ExtResource("7_ulut4")]
+position = Vector2(32, -16)
 
 [node name="Switch" parent="." instance=ExtResource("3_gx13o")]
 position = Vector2(272, 128)
