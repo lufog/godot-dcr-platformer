@@ -16,19 +16,19 @@
 [node name="TileMap" parent="." instance=ExtResource("2_ca0xh")]
 
 [node name="Enemy" parent="." instance=ExtResource("3_3w8as")]
-position = Vector2(122, 161)
+position = Vector2(22, 161)
 
 [node name="Player" parent="." instance=ExtResource("4_noxn4")]
 position = Vector2(104, 120)
 
 [node name="GroundButton" parent="." instance=ExtResource("2_vpxd0")]
-position = Vector2(72, 128)
+position = Vector2(168, 160)
 
 [node name="StoneGate" parent="GroundButton" instance=ExtResource("7_jgfoh")]
-position = Vector2(-16, 16)
+position = Vector2(-112, -16)
 
 [node name="RigidBox" parent="GroundButton/StoneGate" instance=ExtResource("7_ulut4")]
-position = Vector2(32, -16)
+position = Vector2(152, 16)
 
 [node name="Switch" parent="." instance=ExtResource("3_gx13o")]
 position = Vector2(272, 128)

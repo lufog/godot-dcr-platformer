@@ -11,7 +11,7 @@ var is_closed := true
 var state_queue: Array[States]
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	match state:
 		States.IDLE:
 			animated_sprite.play("idle")

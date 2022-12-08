@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://btboaal3h6vkr"]
+[gd_scene load_steps=62 format=3 uid="uid://btboaal3h6vkr"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_iqkht"]
 [ext_resource type="Texture2D" uid="uid://dfaq7cocuyix8" path="res://player/textures/player_sprite_sheet.png" id="2_joq06"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://player/states/attack_state.gd" id="8_8uuua"]
 [ext_resource type="Script" path="res://player/states/dash_state.gd" id="9_pyfr0"]
 [ext_resource type="Script" path="res://player/states/death_state.gd" id="10_c3jrm"]
+[ext_resource type="Script" path="res://player/states/push_state.gd" id="11_nnb03"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e51sc"]
 radius = 4.0
@@ -409,3 +410,6 @@ script = ExtResource("9_pyfr0")
 
 [node name="DeathState" type="Node" parent="StateMachine"]
 script = ExtResource("10_c3jrm")
+
+[node name="PushState" type="Node" parent="StateMachine"]
+script = ExtResource("11_nnb03")

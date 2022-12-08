@@ -8,6 +8,8 @@ enum States { IDLE, WALK, FALL, JUMP, ATTACK, DASH }
 @export var dash_speed := 300.0
 @export var num_dashes := 1
 
+var rigid_push := Vector2(240, 0)
+
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_direction: int
 var is_attacking := false

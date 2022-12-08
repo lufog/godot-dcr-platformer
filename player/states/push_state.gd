@@ -2,7 +2,7 @@ extends PlayerState
 
 
 func enter() -> void:
-	player.animation_state.travel("Walk")
+	player.animation_state.travel("Push")
 
 
 func exit() -> void:
@@ -13,7 +13,6 @@ func physics_update(delta: float) -> void:
 	if not player.is_on_floor():
 		if player.velocity.y > 0:
 			state_machine.transition_to("FallState")
-			return
 	
 	var input_direction_x := Input.get_axis("ui_left", "ui_right")
 	
@@ -29,17 +28,9 @@ func physics_update(delta: float) -> void:
 	var collision_count := player.get_slide_collision_count()
 	for i in collision_count:
 		var _collision := player.get_slide_collision(i)
-		var collider := _collision.get_collider()
-		if collider is SpikeClub:
-			state_machine.transition_to("DeathState")
-			return
-		elif collider is RigidBox and player.is_on_wall():
-			state_machine.transition_to("PushState")
-		
+		var box := _collision.get_collider() as RigidBox
+		if box != null:
+			box.apply_central_impulse(-_collision.get_normal() * player.rigid_push)
 	
 	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("JumpState")
-	elif Input.is_action_pressed("attack"):
-		state_machine.transition_to("AttackState")
-	elif Input.is_action_just_pressed("dash") and player.has_dashes():
-		state_machine.transition_to("DashState")
