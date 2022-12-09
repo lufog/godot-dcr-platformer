@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://q1rif0ebdgm7"]
+[gd_scene load_steps=5 format=3 uid="uid://q1rif0ebdgm7"]
 
 [ext_resource type="Script" path="res://objects/spike_club/spike_club.gd" id="1_kwp0p"]
+[ext_resource type="Script" path="res://objects/spike_club/spike_club_marker.gd" id="1_nys6w"]
+[ext_resource type="Texture2D" uid="uid://cjcksnkbbstcl" path="res://objects/spike_club/textures/spike_club.png" id="2_oksmb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbkeh"]
+size = Vector2(20, 48)
 
 [node name="SpikeClubMarker" type="Marker2D"]
+script = ExtResource("1_nys6w")
 
 [node name="SpikeClub" type="CharacterBody2D" parent="."]
+collision_layer = 4
 script = ExtResource("1_kwp0p")
+
+[node name="Sprite" type="Sprite2D" parent="SpikeClub"]
+texture = ExtResource("2_oksmb")
+offset = Vector2(0, 24)
+
+[node name="Collision" type="CollisionShape2D" parent="SpikeClub"]
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_nbkeh")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7muc0gc6af0m"]
+[gd_scene load_steps=10 format=3 uid="uid://c7muc0gc6af0m"]
 
 [ext_resource type="PackedScene" uid="uid://da6v3njfa45gy" path="res://background/background.tscn" id="1_6ev12"]
 [ext_resource type="PackedScene" uid="uid://cpwng8msx6iad" path="res://tiles/tile_map.tscn" id="2_ca0xh"]
@@ -8,10 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://btboaal3h6vkr" path="res://player/player.tscn" id="4_noxn4"]
 [ext_resource type="PackedScene" uid="uid://06pw75svvykn" path="res://objects/stone_gate/stone_gate.tscn" id="7_jgfoh"]
 [ext_resource type="PackedScene" uid="uid://c1ea08py1fqrn" path="res://objects/rigid_box/rigid_box.tscn" id="7_ulut4"]
+[ext_resource type="PackedScene" uid="uid://q1rif0ebdgm7" path="res://objects/spike_club/spike_club.tscn" id="8_o2hye"]
 
 [node name="Game" type="Node"]
 
 [node name="Background" parent="." instance=ExtResource("1_6ev12")]
+
+[node name="SpikeClubMarker" parent="." instance=ExtResource("8_o2hye")]
+position = Vector2(152, 64)
 
 [node name="TileMap" parent="." instance=ExtResource("2_ca0xh")]
 
