@@ -30,6 +30,10 @@ func physics_update(delta: float) -> void:
 	for i in collision_count:
 		var _collision := player.get_slide_collision(i)
 		var collider := _collision.get_collider()
+		if collider is SpikePit:
+			if _collision.get_normal().y == -1:
+				state_machine.transition_to("DeathState")
+				return
 		if collider is SpikeClub:
 			state_machine.transition_to("DeathState")
 			return
