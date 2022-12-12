@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7muc0gc6af0m"]
+[gd_scene load_steps=12 format=3 uid="uid://c7muc0gc6af0m"]
 
 [ext_resource type="PackedScene" uid="uid://da6v3njfa45gy" path="res://background/background.tscn" id="1_6ev12"]
 [ext_resource type="PackedScene" uid="uid://cpwng8msx6iad" path="res://tiles/tile_map.tscn" id="2_ca0xh"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://06pw75svvykn" path="res://objects/stone_gate/stone_gate.tscn" id="7_jgfoh"]
 [ext_resource type="PackedScene" uid="uid://c1ea08py1fqrn" path="res://objects/rigid_box/rigid_box.tscn" id="7_ulut4"]
 [ext_resource type="PackedScene" uid="uid://q1rif0ebdgm7" path="res://objects/spike_club/spike_club.tscn" id="8_o2hye"]
+[ext_resource type="PackedScene" uid="uid://cswhjegqmkqle" path="res://objects/falling_spikes/falling_spikes.tscn" id="11_6jihg"]
 
 [node name="Game" type="Node"]
 
@@ -44,3 +45,6 @@ position = Vector2(272, 128)
 
 [node name="StoneGate" parent="Switch" instance=ExtResource("7_jgfoh")]
 position = Vector2(24, -32)
+
+[node name="FallingSpikes" parent="." instance=ExtResource("11_6jihg")]
+position = Vector2(184, 96)
