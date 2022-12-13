@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://yuv8emdu20of"]
+
+[ext_resource type="Texture2D" uid="uid://bvt2uhb84svbc" path="res://assets/Objects/misc_sheet.png" id="1_6jgvb"]
+
+[node name="Plants" type="Sprite2D"]
+texture = ExtResource("1_6jgvb")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(0, 216, 24, 24)

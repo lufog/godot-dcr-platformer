@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpjdp0208ec2w"]
+
+[ext_resource type="Texture2D" uid="uid://bvt2uhb84svbc" path="res://assets/Objects/misc_sheet.png" id="1_up4yd"]
+
+[node name="Shrooms" type="Sprite2D"]
+texture = ExtResource("1_up4yd")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(0, 264, 24, 24)

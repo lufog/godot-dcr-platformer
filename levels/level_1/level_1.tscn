@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://utnjo5xdyqiv"]
+
+[ext_resource type="Script" path="res://levels/level_1/level_1.gd" id="1_hmp8l"]
+[ext_resource type="PackedScene" uid="uid://da6v3njfa45gy" path="res://background/background.tscn" id="2_l6dnm"]
+[ext_resource type="PackedScene" uid="uid://yuv8emdu20of" path="res://bg_elements/plants.tscn" id="3_31qm8"]
+[ext_resource type="PackedScene" uid="uid://db3gx6060qr85" path="res://objects/door/door.tscn" id="4_jtuky"]
+[ext_resource type="PackedScene" uid="uid://c1ea08py1fqrn" path="res://objects/rigid_box/rigid_box.tscn" id="5_oo63g"]
+[ext_resource type="PackedScene" uid="uid://k5okttkwfrpe" path="res://enemy/enemy.tscn" id="6_42q1q"]
+[ext_resource type="PackedScene" uid="uid://btboaal3h6vkr" path="res://player/player.tscn" id="7_fhj7i"]
+[ext_resource type="PackedScene" uid="uid://cpwng8msx6iad" path="res://tiles/tile_map.tscn" id="7_nfcx3"]
+
+[node name="Level1" type="Node"]
+script = ExtResource("1_hmp8l")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background" parent="Background" instance=ExtResource("2_l6dnm")]
+
+[node name="BGElements" type="Node2D" parent="."]
+
+[node name="Plants" parent="BGElements" instance=ExtResource("3_31qm8")]
+position = Vector2(160, 48)
+
+[node name="Door" type="Node2D" parent="."]
+
+[node name="Door" parent="Door" instance=ExtResource("4_jtuky")]
+position = Vector2(32, 160)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="RigidBox" parent="Objects" instance=ExtResource("5_oo63g")]
+position = Vector2(136, 160)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("6_42q1q")]
+position = Vector2(224, 160)
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Player" parent="Player" instance=ExtResource("7_fhj7i")]
+position = Vector2(88, 120)
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="TileMap" parent="Tiles" instance=ExtResource("7_nfcx3")]

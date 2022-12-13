@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6d165sf18x7y"]
+
+[ext_resource type="Script" path="res://levels/level_template/level_template.gd" id="1_3cx7y"]
+
+[node name="LevelTemplate" type="Node"]
+script = ExtResource("1_3cx7y")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="BGElements" type="Node2D" parent="."]
+
+[node name="Door" type="Node2D" parent="."]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Tiles" type="Node2D" parent="."]
