@@ -44,6 +44,10 @@ func has_dashes() -> bool:
 	return num_dashes > 0
 
 
+func play_death_sound() -> void:
+	SoundManager.death_sound.play()
+
+
 func update_direction(input_direction: float) -> void:
 	if input_direction > 0:
 		facing_direction = 1
