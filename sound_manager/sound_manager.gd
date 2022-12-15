@@ -26,4 +26,7 @@ func update_sound_volume(value, vol_range, type: String) -> void:
 
 
 func stop_all_music() -> void:
-	pass
+	for child in music.get_children():
+		var music_player := child as AudioStreamPlayer
+		if music_player != null and music_player.playing:
+			music_player.stop()
