@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnqdbcvrv4f2j"]
+
+[ext_resource type="Texture2D" uid="uid://c3e42u3oogvyx" path="res://assets/UI/title.png" id="1_rdcld"]
+[ext_resource type="Script" path="res://ui/title_screen.gd" id="1_vj8ke"]
+[ext_resource type="PackedScene" uid="uid://utnjo5xdyqiv" path="res://levels/level_1/level_1.tscn" id="2_l5kcm"]
+[ext_resource type="FontFile" uid="uid://byramxkaimw7y" path="res://assets/Fonts/Kenney Pixel.ttf" id="2_rcpxw"]
+[ext_resource type="PackedScene" uid="uid://rp5gfy77uc2v" path="res://ui/settings_screen.tscn" id="3_m741k"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_vj8ke")
+level_scene = ExtResource("2_l5kcm")
+settings_scene = ExtResource("3_m741k")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_rdcld")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = 8.0
+offset_right = 52.5
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rcpxw")
+theme_override_font_sizes/font_size = 24
+text = "Start"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rcpxw")
+theme_override_font_sizes/font_size = 24
+text = "Settings"
+
+[connection signal="button_down" from="VBoxContainer/StartButton" to="." method="_on_start_button_down"]
+[connection signal="button_up" from="VBoxContainer/StartButton" to="." method="_on_start_button_up"]
+[connection signal="button_down" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_down"]
+[connection signal="button_up" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_up"]

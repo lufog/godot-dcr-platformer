@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://btsttb8uwdk7e"]
 
-[ext_resource type="Texture2D" uid="uid://dm57c33yust61" path="res://assets/UI/logo.png" id="1_hdrxc"]
+[ext_resource type="Texture2D" uid="uid://dm57c33yust61" path="res://assets/UI/logo.png" id="1_hlfd4"]
+[ext_resource type="PackedScene" uid="uid://luj5bdw8hp13" path="res://ui/present_screen.tscn" id="2_3665i"]
 [ext_resource type="Script" path="res://ui/logo_screen.gd" id="2_m32ui"]
-[ext_resource type="PackedScene" uid="uid://utnjo5xdyqiv" path="res://levels/level_1/level_1.tscn" id="3_0mtje"]
 
 [node name="LogoScreen" type="TextureRect"]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_hdrxc")
+texture = ExtResource("1_hlfd4")
 script = ExtResource("2_m32ui")
-next_scene = ExtResource("3_0mtje")
+next_scene = ExtResource("2_3665i")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://luj5bdw8hp13"]
+
+[ext_resource type="Script" path="res://ui/present_screen.gd" id="1_7hm5r"]
+[ext_resource type="Texture2D" uid="uid://dq1nkmp4qchnu" path="res://assets/UI/presents.png" id="1_ng2o2"]
+[ext_resource type="PackedScene" uid="uid://dnqdbcvrv4f2j" path="res://ui/title_screen.tscn" id="2_sebvf"]
+
+[node name="PresentScreen" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ng2o2")
+script = ExtResource("1_7hm5r")
+next_scene = ExtResource("2_sebvf")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
