@@ -1,7 +1,83 @@
-[gd_scene format=3 uid="uid://rp5gfy77uc2v"]
+[gd_scene load_steps=3 format=3 uid="uid://rp5gfy77uc2v"]
+
+[ext_resource type="Script" path="res://ui/settings_screen.gd" id="1_p6xn4"]
+[ext_resource type="FontFile" uid="uid://byramxkaimw7y" path="res://assets/Fonts/Kenney Pixel.ttf" id="1_um6xi"]
 
 [node name="SettingsScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p6xn4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.219608, 0.243137, 0.376471, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MusicLabel" type="Label" parent="VBoxContainer"]
+offset_right = 120.0
+offset_bottom = 21.0
+theme_override_fonts/font = ExtResource("1_um6xi")
+theme_override_font_sizes/font_size = 24
+text = "Music"
+
+[node name="MusicScrollBar" type="HScrollBar" parent="VBoxContainer"]
+offset_top = 25.0
+offset_right = 120.0
+offset_bottom = 36.0
+size_flags_vertical = 3
+max_value = 1.0
+value = 0.5
+
+[node name="SoundsLabel" type="Label" parent="VBoxContainer"]
+offset_top = 40.0
+offset_right = 120.0
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("1_um6xi")
+theme_override_font_sizes/font_size = 24
+text = "Sounds"
+
+[node name="SoundsScrollBar" type="HScrollBar" parent="VBoxContainer"]
+offset_top = 65.0
+offset_right = 120.0
+offset_bottom = 76.0
+size_flags_vertical = 3
+max_value = 1.0
+value = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+offset_top = 80.0
+offset_right = 120.0
+offset_bottom = 100.0
+alignment = 1
+
+[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+offset_left = 44.0
+offset_right = 76.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("1_um6xi")
+text = "Back"
+
+[connection signal="scrolling" from="VBoxContainer/MusicScrollBar" to="." method="_on_music_scroll_bar_scrolling"]
+[connection signal="scrolling" from="VBoxContainer/SoundsScrollBar" to="." method="_on_sounds_scroll_bar_scrolling"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_down"]
+[connection signal="button_up" from="VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_up"]

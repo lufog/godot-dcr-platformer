@@ -21,41 +21,52 @@ script = ExtResource("1_8r3kk")
 [node name="TitleScreenMusic" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("2_xbrtt")
 volume_db = -10.0
+bus = &"Music"
 
 [node name="GamePlayMusic" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("3_b512l")
 volume_db = -10.0
+bus = &"Music"
 
 [node name="EndingMusic" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("4_alunv")
 volume_db = -10.0
+bus = &"Music"
 
 [node name="Sounds" type="Node" parent="."]
 
 [node name="AttackSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("5_j6tk0")
 volume_db = -10.0
+bus = &"Sounds"
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("6_uh8dt")
+bus = &"Sounds"
 
 [node name="DashSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("7_nm5ha")
+bus = &"Sounds"
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("8_by7kp")
 volume_db = -10.0
+bus = &"Sounds"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("9_gp5ok")
 volume_db = -10.0
+bus = &"Sounds"
 
 [node name="LandSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("10_t8tcg")
 volume_db = -10.0
+bus = &"Sounds"
 
 [node name="LevelCompleteSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("11_ssr16")
+bus = &"Sounds"
 
 [node name="LogoSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("12_xh4j5")
+bus = &"Sounds"

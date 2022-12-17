@@ -1,6 +1,11 @@
 extends Node
 
 
+enum _BusIdx { MASTER = 0, MUSIC = 1, SOUNDS = 2 }
+
+var music_scroll_vol_current
+var sounds_scroll_vol_current
+
 @onready var music: Node = $Music
 @onready var title_screen_music: AudioStreamPlayer = $Music/TitleScreenMusic
 @onready var game_play_music: AudioStreamPlayer = $Music/GamePlayMusic
@@ -17,12 +22,14 @@ extends Node
 @onready var logo_sound: AudioStreamPlayer = $Sounds/LogoSound
 
 
-func update_sound_volume(value, vol_range, type: String) -> void:
+func update_sound_volume(value, vol_range, type: StringName) -> void:
 	match type:
-		"Music":
-			pass
-		"Sounds":
-			pass
+		&"Music":
+			AudioServer.set_bus_volume_db(_BusIdx.MUSIC, linear_to_db(value))
+			music_scroll_vol_current = value
+		&"Sounds":
+			AudioServer.set_bus_volume_db(_BusIdx.SOUNDS, linear_to_db(value))
+			sounds_scroll_vol_current = value
 
 
 func stop_all_music() -> void:
