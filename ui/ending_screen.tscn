@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://brxd48yw5qbn7"]
+
+[ext_resource type="Script" path="res://ui/ending_screen.gd" id="1_l26g5"]
+[ext_resource type="FontFile" uid="uid://byramxkaimw7y" path="res://assets/Fonts/Kenney Pixel.ttf" id="1_mf1yl"]
+[ext_resource type="Texture2D" uid="uid://bdn3737dda58f" path="res://assets/UI/EndingBg1.png" id="2_tqkl6"]
+[ext_resource type="Texture2D" uid="uid://dfaq7cocuyix8" path="res://player/textures/player_sprite_sheet.png" id="3_v21tq"]
+
+[sub_resource type="Animation" id="Animation_kqwbo"]
+resource_name = "FadeInNOut"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/TitleLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/NameLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xmtwq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/TitleLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/NameLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qp5j"]
+_data = {
+"FadeInNOut": SubResource("Animation_kqwbo"),
+"RESET": SubResource("Animation_xmtwq")
+}
+
+[node name="EndingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l26g5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -116.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_mf1yl")
+horizontal_alignment = 1
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_mf1yl")
+horizontal_alignment = 1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(320, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_tqkl6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1qp5j")
+}
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(160, 36)
+texture = ExtResource("3_v21tq")
+vframes = 38
+frame = 24
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

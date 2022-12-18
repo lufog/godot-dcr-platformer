@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://utnjo5xdyqiv"]
+[gd_scene load_steps=10 format=3 uid="uid://utnjo5xdyqiv"]
 
 [ext_resource type="Script" path="res://levels/level_1/level_1.gd" id="1_hmp8l"]
 [ext_resource type="PackedScene" uid="uid://da6v3njfa45gy" path="res://background/background.tscn" id="2_l6dnm"]
 [ext_resource type="PackedScene" uid="uid://yuv8emdu20of" path="res://bg_elements/plants.tscn" id="3_31qm8"]
 [ext_resource type="PackedScene" uid="uid://db3gx6060qr85" path="res://objects/door/door.tscn" id="4_jtuky"]
 [ext_resource type="PackedScene" uid="uid://c1ea08py1fqrn" path="res://objects/rigid_box/rigid_box.tscn" id="5_oo63g"]
+[ext_resource type="PackedScene" uid="uid://brxd48yw5qbn7" path="res://ui/ending_screen.tscn" id="5_yjhax"]
 [ext_resource type="PackedScene" uid="uid://k5okttkwfrpe" path="res://enemy/enemy.tscn" id="6_42q1q"]
 [ext_resource type="PackedScene" uid="uid://btboaal3h6vkr" path="res://player/player.tscn" id="7_fhj7i"]
 [ext_resource type="PackedScene" uid="uid://cpwng8msx6iad" path="res://tiles/tile_map.tscn" id="7_nfcx3"]
@@ -25,6 +26,7 @@ position = Vector2(160, 48)
 
 [node name="Door" parent="Door" instance=ExtResource("4_jtuky")]
 position = Vector2(32, 160)
+next_scene = ExtResource("5_yjhax")
 
 [node name="Objects" type="Node2D" parent="."]
 
