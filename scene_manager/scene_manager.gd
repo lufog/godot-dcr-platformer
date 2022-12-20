@@ -11,7 +11,8 @@ var color_light := Color(255, 255, 255, 255)
 @onready var _scene_tree := get_tree()
 @onready var color_rect: ColorRect = $ColorRect
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var logo_screen: PackedScene = preload("res://ui/logo_screen.tscn")
+@onready var logo_screen: PackedScene = preload("res://levels/level_1/level_1.tscn")
+#@onready var logo_screen: PackedScene = preload("res://ui/logo_screen.tscn")
 
 func _ready() -> void:
 	change_scene(logo_screen, SceneManager.Fades.DARK)

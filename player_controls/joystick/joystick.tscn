@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://deiyw4ryshxya"]
+
+[ext_resource type="Texture2D" uid="uid://c0414jqcq7q5k" path="res://assets/MobileControls/ButtonArea.png" id="1_8jswc"]
+[ext_resource type="Script" path="res://player_controls/joystick/joystick.gd" id="2_sbs20"]
+[ext_resource type="Texture2D" uid="uid://cohbxehkmj0hq" path="res://assets/MobileControls/ButtonNormal.png" id="3_ovcx1"]
+[ext_resource type="Texture2D" uid="uid://co7tuh386fs3a" path="res://assets/MobileControls/ButtonPressed.png" id="4_c35ys"]
+
+[node name="ButtonArea" type="Sprite2D"]
+texture = ExtResource("1_8jswc")
+
+[node name="Button" type="TouchScreenButton" parent="."]
+position = Vector2(-8, -8)
+texture_normal = ExtResource("3_ovcx1")
+texture_pressed = ExtResource("4_c35ys")
+script = ExtResource("2_sbs20")

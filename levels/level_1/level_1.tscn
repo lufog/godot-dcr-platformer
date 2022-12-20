@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://utnjo5xdyqiv"]
+[gd_scene load_steps=11 format=3 uid="uid://utnjo5xdyqiv"]
 
 [ext_resource type="Script" path="res://levels/level_1/level_1.gd" id="1_hmp8l"]
 [ext_resource type="PackedScene" uid="uid://da6v3njfa45gy" path="res://background/background.tscn" id="2_l6dnm"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://k5okttkwfrpe" path="res://enemy/enemy.tscn" id="6_42q1q"]
 [ext_resource type="PackedScene" uid="uid://btboaal3h6vkr" path="res://player/player.tscn" id="7_fhj7i"]
 [ext_resource type="PackedScene" uid="uid://cpwng8msx6iad" path="res://tiles/tile_map.tscn" id="7_nfcx3"]
+[ext_resource type="PackedScene" uid="uid://30cspf1x0e3a" path="res://player_controls/simple/player_controls_simple.tscn" id="10_qyqud"]
 
 [node name="Level1" type="Node"]
 script = ExtResource("1_hmp8l")
@@ -46,3 +47,5 @@ position = Vector2(88, 120)
 [node name="Tiles" type="Node2D" parent="."]
 
 [node name="TileMap" parent="Tiles" instance=ExtResource("7_nfcx3")]
+
+[node name="PlayerControlsSimple" parent="." instance=ExtResource("10_qyqud")]
