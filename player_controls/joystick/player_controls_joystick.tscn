@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://dktt7dsjl43cf"]
+
+[ext_resource type="Texture2D" uid="uid://nytbk7i7km8j" path="res://assets/MobileControls/attack_unpressed.png" id="5_t4qqj"]
+[ext_resource type="Texture2D" uid="uid://bncrwojgdofmj" path="res://assets/MobileControls/attack_pressed.png" id="6_xf2dp"]
+[ext_resource type="PackedScene" uid="uid://deiyw4ryshxya" path="res://player_controls/joystick/joystick.tscn" id="7_k8lt1"]
+[ext_resource type="Texture2D" uid="uid://dk4aym3n6j2mj" path="res://assets/MobileControls/jump_unpressed.png" id="7_vak6c"]
+[ext_resource type="Texture2D" uid="uid://rbc7qsevi2fb" path="res://assets/MobileControls/jump_pressed.png" id="8_qccwb"]
+[ext_resource type="Texture2D" uid="uid://cjr1iexjy1ll4" path="res://assets/MobileControls/dash_unpressed.png" id="9_k0x5f"]
+[ext_resource type="Texture2D" uid="uid://dyqso1khr3n6r" path="res://assets/MobileControls/dash_pressed.png" id="10_5drpa"]
+
+[node name="PlayerControlsJoystick" type="Node2D"]
+
+[node name="AttackButton" type="TouchScreenButton" parent="."]
+position = Vector2(263, 135)
+texture_normal = ExtResource("5_t4qqj")
+texture_pressed = ExtResource("6_xf2dp")
+action = "attack"
+visibility_mode = 1
+
+[node name="JumpButton" type="TouchScreenButton" parent="."]
+position = Vector2(290, 150)
+texture_normal = ExtResource("7_vak6c")
+texture_pressed = ExtResource("8_qccwb")
+action = "jump"
+visibility_mode = 1
+
+[node name="DashButton" type="TouchScreenButton" parent="."]
+position = Vector2(290, 120)
+texture_normal = ExtResource("9_k0x5f")
+texture_pressed = ExtResource("10_5drpa")
+action = "dash"
+visibility_mode = 1
+
+[node name="ButtonArea" parent="." instance=ExtResource("7_k8lt1")]
+position = Vector2(26, 154)
