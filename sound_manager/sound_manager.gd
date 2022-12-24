@@ -22,7 +22,7 @@ var sounds_scroll_vol_current
 @onready var logo_sound: AudioStreamPlayer = $Sounds/LogoSound
 
 
-func update_sound_volume(value, vol_range, type: StringName) -> void:
+func update_sound_volume(value, type: StringName) -> void:
 	match type:
 		&"Music":
 			AudioServer.set_bus_volume_db(_BusIdx.MUSIC, linear_to_db(value))

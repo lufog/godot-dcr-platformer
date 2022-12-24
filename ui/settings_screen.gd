@@ -2,8 +2,6 @@ extends Control
 
 
 var next_scene_path := ^"res://ui/title_screen.tscn"
-var music_vol_range := 10.0
-var sounds_vol_range := 10.0
 
 @onready var music_scroll_bar: HScrollBar = $VBoxContainer/MusicScrollBar
 @onready var sounds_scroll_bar: HScrollBar = $VBoxContainer/SoundsScrollBar
@@ -28,8 +26,8 @@ func _on_back_button_down() -> void:
 
 
 func _on_music_scroll_bar_scrolling() -> void:
-	SoundManager.update_sound_volume(music_scroll_bar.value, music_vol_range, &"Music")
+	SoundManager.update_sound_volume(music_scroll_bar.value, &"Music")
 
 
 func _on_sounds_scroll_bar_scrolling() -> void:
-	SoundManager.update_sound_volume(sounds_scroll_bar.value, sounds_vol_range, &"Sounds")
+	SoundManager.update_sound_volume(sounds_scroll_bar.value, &"Sounds")

@@ -65,4 +65,7 @@ func apply_gravity(delta: float) -> void:
 
 
 func restart_level() -> void:
-	pass
+	var current_level := get_parent().get_parent().name.to_snake_case()
+	var path := "res://levels/" + current_level + "/" + current_level + ".tscn"
+	var current_scene := load(path)
+	SceneManager.change_scene(current_scene, SceneManager.Fades.RESTART_LEVEL)
